@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import Card from "./Card";
+import Card from "../layout/Card";
 import { useDrop } from "react-dnd";
-import { MainContext } from "../context/CardContext";
+import { MainContext } from "../../context/ThemeContext";
 import { useContext } from "react";
 
 const FoundationPile = ({ foundation, onDrop, suit }) => {
@@ -13,7 +13,7 @@ const FoundationPile = ({ foundation, onDrop, suit }) => {
       isOver: monitor.isOver(),
     }),
   });
-  const { lightTheme: light } = useContext(MainContext);
+  const { light } = useContext(MainContext);
 
   return (
     <div

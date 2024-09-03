@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { MainContext } from "../context/CardContext";
+import { MainContext } from "../../context/ThemeContext";
 
 const StockPile = ({ stock, onClick }) => {
-  const { lightTheme: light } = useContext(MainContext);
+  const { light } = useContext(MainContext);
 
   return (
     <div

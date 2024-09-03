@@ -1,19 +1,20 @@
 /* eslint-disable react/prop-types */
 
 import { useContext } from "react";
-import { MainContext } from "../context/CardContext";
+import { MainContext } from "../../context/ThemeContext";
 
 export default function ScoreFooter({ score }) {
-  const { lightTheme, setLightTheme } = useContext(MainContext);
+  const { light, setLight } = useContext(MainContext);
+
   return (
     <div className="fixed bottom-6 max-w-7xl mx-auto w-full px-10 flex justify-between items-center">
       <div className="font-teko text-emerald-50 text-3xl">Score: {score}</div>
       <div className="flex flex-col items-end">
         <img
-          src={lightTheme ? "/dark.svg" : "/light.svg"}
+          src={light ? "/dark.svg" : "/light.svg"}
           alt="Theme"
           className="w-6 cursor-pointer"
-          onClick={() => setLightTheme(!lightTheme)}
+          onClick={() => setLight(!light)}
         />
         <div className="text-xs text-gray-400 w-full flex justify-end mt-3">
           <div>Designs:</div>

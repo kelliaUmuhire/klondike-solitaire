@@ -3,14 +3,14 @@ import { createContext, useState } from "react";
 
 export const MainContext = createContext();
 
-export const PageContext = ({ children }) => {
-  const [lightTheme, setLightTheme] = useState(true);
+export const ThemeContext = ({ children }) => {
+  const [light, setLight] = useState(true);
 
   return (
     <MainContext.Provider
       value={{
-        lightTheme,
-        setLightTheme,
+        light,
+        setLight,
       }}
     >
       {children}

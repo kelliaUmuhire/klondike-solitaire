@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import Card from "./Card";
-import { MainContext } from "../context/CardContext";
+import Card from "../layout/Card";
+import { MainContext } from "../../context/ThemeContext";
 import { useContext } from "react";
 
 const WastePile = ({ waste, onClick }) => {
-  const { lightTheme: light } = useContext(MainContext);
-  //todo: can only drag top card
+  const { light } = useContext(MainContext);
+
   return (
     <div
       className={`w-24 h-36 bg-transparent  ${

@@ -2,7 +2,7 @@
 import { useContext, useEffect } from "react";
 import { useDrag } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
-import { MainContext } from "../context/CardContext";
+import { MainContext } from "../../context/ThemeContext";
 
 const Card = ({ card, onClick, styles, lastIndex }) => {
   const [{ isDragging }, dragRef, preview] = useDrag({
@@ -14,7 +14,7 @@ const Card = ({ card, onClick, styles, lastIndex }) => {
       isDragging: monitor.isDragging(),
     }),
   });
-  const { lightTheme: light } = useContext(MainContext);
+  const { light } = useContext(MainContext);
 
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });

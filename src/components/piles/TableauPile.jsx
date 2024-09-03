@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useDrop } from "react-dnd";
-import Card from "./Card";
+import Card from "../layout/Card";
 
 const TableauPile = ({ cards, onClick, position, onDrop }) => {
-  const [{ isOver }, dropRef] = useDrop({
+  const [, dropRef] = useDrop({
     accept: "CARD",
     drop: (item) => onDrop(item.card, position),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
   });
+
   return (
     <div
       ref={dropRef}

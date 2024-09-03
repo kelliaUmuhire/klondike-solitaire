@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect, useContext } from "react";
-import FoundationPile from "./components/FoundationPile";
-import TableauPile from "./components/TableauPile";
-import StockPile from "./components/StockPile";
-import WastePile from "./components/WastePile";
+import FoundationPile from "./components/piles/FoundationPile";
+import TableauPile from "./components/piles/TableauPile";
+import StockPile from "./components/piles/StockPile";
+import WastePile from "./components/piles/WastePile";
 import { createDeck, isFit, ranks, shuffleDeck } from "./utils";
-import CustomDragLayer from "./components/CustomDragLayer";
-import { MainContext } from "./context/CardContext";
-import ScoreFooter from "./components/ScoreFooter";
+import CustomDragLayer from "./components/layout/CustomDragLayer";
+import { MainContext } from "./context/ThemeContext";
+import ScoreFooter from "./components/layout/ScoreFooter";
 
 const SolitaireBoard = () => {
   const [tableau, setTableau] = useState([[], [], [], [], [], [], []]);
@@ -20,7 +20,7 @@ const SolitaireBoard = () => {
   const [stock, setStock] = useState([]);
   const [waste, setWaste] = useState([]);
   const [score, setScore] = useState(0);
-  const { lightTheme, setLightTheme } = useContext(MainContext);
+  const { light } = useContext(MainContext);
 
   useEffect(() => {
     const newDeck = shuffleDeck(createDeck());
@@ -133,7 +133,7 @@ const SolitaireBoard = () => {
   };
 
   return (
-    <div className={`w-full ${lightTheme ? "bg-emerald-800" : "bg-zinc-950"}`}>
+    <div className={`w-full ${light ? "bg-emerald-800" : "bg-zinc-950"}`}>
       <div className="min-h-screen  flex flex-col items-center p-10 pt-12 relative gap-14 max-w-6xl mx-auto w-full">
         <ScoreFooter score={score} />
         <div className="flex justify-between w-full mb-4">
@@ -142,26 +142,14 @@ const SolitaireBoard = () => {
             <WastePile waste={waste} onClick={handleCardDrop} />
           </div>
           <div className="flex space-x-4">
-            <FoundationPile
-              suit="heart"
-              foundation={foundations.heart}
-              onDrop={handleCardDrop}
-            />
-            <FoundationPile
-              suit="diamond"
-              foundation={foundations.diamond}
-              onDrop={handleCardDrop}
-            />
-            <FoundationPile
-              suit="club"
-              foundation={foundations.club}
-              onDrop={handleCardDrop}
-            />
-            <FoundationPile
-              suit="spade"
-              foundation={foundations.spade}
-              onDrop={handleCardDrop}
-            />
+            {Object.keys(foundations).map((foundation) => (
+              <FoundationPile
+                key={foundation}
+                suit={foundation}
+                foundation={foundations[foundation]}
+                onDrop={handleCardDrop}
+              />
+            ))}
           </div>
         </div>
         <div className="flex justify-center w-full lg:gap-5 gap-4">
