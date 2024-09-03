@@ -1,4 +1,4 @@
-export const suits = ["heart", "diamond", "club", "spade"];
+export const suits = ["hearts", "diamonds", "clubs", "spades"];
 
 export const ranks = [
   "ace",
@@ -42,4 +42,4 @@ export const isFit = (card1, card2) =>
     (cardColor(card2) == "red" && cardColor(card1) == "black"));
 
 const cardColor = (card) =>
-  card.suit == "heart" || card.suit == "diamond" ? "red" : "black";
+  card.suit == "hearts" || card.suit == "diamonds" ? "red" : "black";

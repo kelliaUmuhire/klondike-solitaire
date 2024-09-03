@@ -12,10 +12,10 @@ import ScoreFooter from "./components/layout/ScoreFooter";
 const SolitaireBoard = () => {
   const [tableau, setTableau] = useState([[], [], [], [], [], [], []]);
   const [foundations, setFoundations] = useState({
-    heart: [],
-    diamond: [],
-    club: [],
-    spade: [],
+    hearts: [],
+    diamonds: [],
+    clubs: [],
+    spades: [],
   });
   const [stock, setStock] = useState([]);
   const [waste, setWaste] = useState([]);
